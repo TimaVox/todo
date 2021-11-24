@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Todo\\": "vendor/todo"
+    }
+  },
+  "require": {
+    "vlucas/valitron": "^1.4"
+  }
+}
