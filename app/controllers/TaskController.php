@@ -33,7 +33,7 @@ class TaskController extends BaseController
             $model->load($dataTask);
 
             if(!$model->validate($dataTask)) {
-                $model->getErrors();
+                $_SESSION['errors'] = $model->errors;
                 $_SESSION['form_data'] = $dataTask;
                 $this->redirect();
             }

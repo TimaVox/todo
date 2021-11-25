@@ -45,8 +45,8 @@ class Model
         return $this->db->save($query,  $params);
     }
 
-    public function validate($data){
-//        Validator::langDir(ROOT . '/vendor/vlucas/valitron/lang');
+    public function validate($data)
+    {
         Validator::lang('ru');
         $v = new Validator($data);
         $v->rules($this->rules);
@@ -55,9 +55,5 @@ class Model
         }
         $this->errors = $v->errors();
         return false;
-    }
-
-    public function getErrors(){
-        $_SESSION['errors'] = $this->errors;
     }
 }

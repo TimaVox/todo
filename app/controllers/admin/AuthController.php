@@ -35,7 +35,8 @@ class AuthController extends BaseController
 
         if($login && $pass) {
             $model = new User();
-            if($model->login($login, $pass)) {
+            if($user = $model->login($login, $pass)) {
+                $_SESSION['user'] = $user->login;
                 $_SESSION['success'] = "Вы авторизованы.";
                 $this->redirect('/');
             }

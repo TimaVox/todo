@@ -14,8 +14,7 @@ class User extends BaseModel
         $user = $this->db->execute("SELECT * FROM users WHERE login=? LIMIT 1", [$login]);
         $user = reset($user);
         if(!empty($user) && password_verify($pass, $user->password)) {
-            $_SESSION['user'] = $user->login;
-            return true;
+            return $user;
         }
         return false;
     }

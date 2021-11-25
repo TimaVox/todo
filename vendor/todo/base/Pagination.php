@@ -85,9 +85,10 @@ class Pagination
     public function getParams() : string
     {
         $url = $_SERVER['REQUEST_URI'];
-        preg_match_all("#filter=[\d,&]#", $url, $matches);
+        preg_match_all("#sort=[\w]+&dir=[\w]+#", $url, $matches);
+
         if(count($matches[0]) > 1){
-            $url = preg_replace("#filter=[\d,&]+#", "", $url, 1);
+            $url = preg_replace("#sort=[\w]+&dir=[\w]+#", "", $url, 1);
         }
         $url = explode('?', $url);
         $uri = $url[0] . '?';
@@ -97,6 +98,7 @@ class Pagination
                 if(!preg_match("#page=#", $param)) $uri .= "{$param}&amp;";
             }
         }
+
         return urldecode($uri);
     }
 }
